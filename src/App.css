@@ -1,38 +1,99 @@
-.App {
-  text-align: center;
+#root, html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+   
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0, .3), rgba(0,0,0, .3)),  url("https://source.unsplash.com/user/erondu/1600x900");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card {
+    position: relative;
+    background-color: rgb(197, 182, 182);
+    width: 50%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 2%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.glow::before, .glow::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099,#6e0dd0, #ff3300, #099fff);
+    background-size: 400%;
+    width: calc(100% +  6px);
+    height: calc(100% + 6px); 
+    z-index: -1;
+    animation: animate 20s linear infinite;  
+
+}
+@keyframes animate {
+    0%{
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+.glow::after{
+    filter: blur(40px);
 }
 
-.App-link {
-  color: #61dafb;
+.heading {
+    display: flex;
+    align-items: center;
+    height: 580px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button {
+    position: relative;
+    outline: none;
+    text-decoration: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #273b3b;
+    font-weight: 400;
+    font-family: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 300px;
+    width: 210px;
+    opacity: 1;
+    background-color: #fff;
+    border: 1px solid rgba(22, 76, 176, 0.6);
+    transition: 1.5s;
+    
+}
+
+.button:hover {
+    box-shadow: 0 5px 50px 0 #5e59a8 inset, 0 5px 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 80%;
+        height: 30%;
+    }
 }
